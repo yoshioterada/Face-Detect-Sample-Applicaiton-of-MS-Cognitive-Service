@@ -45,18 +45,14 @@ public class FaceVerifyImpl {
         
         FaceVerifyResponseJSONBody resBody = response.readEntity(FaceVerifyResponseJSONBody.class);
                 
-        if(resBody.getConfidence() >= 0.5){
-            return true;
-        }else{
-            return false;
-        }
+        return resBody.getConfidence() >= 0.5;
         /*
         https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a
         confidence value :
-        A number indicates the confidence of whether two faces belong to one person. 
-        By default, isIdentical is set to True if confidence is greater or equal than 0.5. 
+        A number indicates the confidence of whether two faces belong to one person.
+        By default, isIdentical is set to True if confidence is greater or equal than 0.5.
         This is useful for advanced users to override "isIdentical" and fine-tune the 
         result on their own data.
-        */
+         */
     }
 }
