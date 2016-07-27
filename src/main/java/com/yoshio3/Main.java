@@ -16,6 +16,8 @@
 
 package com.yoshio3;
 
+import com.yoshio3.entities.emotion.EmotionImpl;
+import com.yoshio3.entities.emotion.EmotionResponseJSONBody;
 import com.yoshio3.entities.facedetect.FaceDetectResponseJSONBody;
 import com.yoshio3.entities.facedetect.FaceDetectImpl;
 import com.yoshio3.entities.verify.FaceVerifyImpl;
@@ -28,21 +30,21 @@ import java.util.Optional;
  */
 public class Main {
 
-    public static void main(String[] args) {
-        String subscripotionID = "*********************************************";
+    public static void main(String... args) {
+        String faceDetectSubscripotionID = "********************************";
+        String emotionSubscriptionID = "********************************";
 
         FaceDetectImpl facedetect = new FaceDetectImpl();
-
-        List<FaceDetectResponseJSONBody> persons1 = facedetect.getDetectedPerson("https://c2.staticflickr.com/8/7380/26803752033_b378bcde4d.jpg", subscripotionID);
-        //List<FaceDetectResponseJSONBody> persons2 = facedetect.getDetectedPerson("https://c1.staticflickr.com/1/606/22500593665_540df42382.jpg", subscripotionID);
-        List<FaceDetectResponseJSONBody> persons2 = facedetect.getDetectedPerson("https://c1.staticflickr.com/1/689/22511694501_b0cb19dfca.jpg", subscripotionID);
+        List<FaceDetectResponseJSONBody> persons1 = facedetect.getDetectedPerson("https://c2.staticflickr.com/8/7380/26803752033_b378bcde4d.jpg", faceDetectSubscripotionID);
+        List<FaceDetectResponseJSONBody> persons2 = facedetect.getDetectedPerson("https://c1.staticflickr.com/1/606/22500593665_540df42382.jpg", faceDetectSubscripotionID);
+        //List<FaceDetectResponseJSONBody> persons2 = facedetect.getDetectedPerson("https://c1.staticflickr.com/1/689/22511694501_b0cb19dfca.jpg", faceDetectSubscripotionID);
 
         persons1.stream().forEach(psn1 -> {
             String faceId1 = psn1.getFaceId();
             Optional<FaceDetectResponseJSONBody> findPerson
                     = persons2.stream().filter(psn2 -> {
                         FaceVerifyImpl faceVerify = new FaceVerifyImpl();
-                        return faceVerify.isEqualofTwoFaces(faceId1, psn2.getFaceId(), subscripotionID);
+                        return faceVerify.isEqualofTwoFaces(faceId1, psn2.getFaceId(), faceDetectSubscripotionID);
                     }).findFirst();
             findPerson.ifPresent(findPerson2 -> System.out.println(faceId1 + "\t" + findPerson2.getFaceId() + "は同一人物の可能性大"));
         });
@@ -59,5 +61,9 @@ public class Main {
                 }
             }
         }*/
+
+        EmotionImpl emotion = new EmotionImpl();
+        List<EmotionResponseJSONBody> emPersons1 = emotion.getEmotionalPerson("http://comonetsapo.com/wp-content/uploads/2013/08/2013y08m26d_105217892.jpg", emotionSubscriptionID);        
+        emPersons1.stream().forEach(emp -> System.out.println(emp.getFaceRectangle() + "\t" + emp.getScores()));
     }
 }
