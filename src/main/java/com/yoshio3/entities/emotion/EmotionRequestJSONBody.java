@@ -13,8 +13,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-
-package com.yoshio3.entities.verify;
+package com.yoshio3.entities.emotion;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -26,40 +25,26 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class FaceVerifyRequestJSONBody {
-    private String faceId1;
-    private String faceId2;
+public class EmotionRequestJSONBody {
+    
+    private String url ;
 
     /**
-     * @return the faceId1
+     * @return the url
      */
-    public String getFaceId1() {
-        return faceId1;
+    public String getUrl() {
+        return url;
     }
 
     /**
-     * @param faceId1 the faceId1 to set
+     * @param url the url to set
      */
-    public void setFaceId1(String faceId1) {
-        this.faceId1 = faceId1;
-    }
-
-    /**
-     * @return the faceId2
-     */
-    public String getFaceId2() {
-        return faceId2;
-    }
-
-    /**
-     * @param faceId2 the faceId2 to set
-     */
-    public void setFaceId2(String faceId2) {
-        this.faceId2 = faceId2;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     @Override
     public String toString() {
-        return "FaceVerifyRequestJSONBody{" + "faceId1=" + faceId1 + ", faceId2=" + faceId2 + '}';
-    }
+        return "EmotionRequestJSONBody{" + "url=" + url + '}';
+    }    
 }

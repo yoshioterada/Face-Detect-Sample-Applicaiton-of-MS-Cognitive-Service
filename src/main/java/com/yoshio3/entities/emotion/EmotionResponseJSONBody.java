@@ -13,13 +13,12 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-package com.yoshio3.entities.facedetect;
+package com.yoshio3.entities.emotion;
 
 import java.util.Map;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
-
 
 /**
  *
@@ -27,24 +26,9 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class FaceDetectResponseJSONBody {
-    private String faceId;
+public class EmotionResponseJSONBody {
     private Map<String, Object> faceRectangle;
-    private Map<String, Object> faceAttributes;
-
-    /**
-     * @return the faceId
-     */
-    public String getFaceId() {
-        return faceId;
-    }
-
-    /**
-     * @param faceId the faceId to set
-     */
-    public void setFaceId(String faceId) {
-        this.faceId = faceId;
-    }
+    private Map<String, Object> scores;
 
     /**
      * @return the faceRectangle
@@ -61,21 +45,22 @@ public class FaceDetectResponseJSONBody {
     }
 
     /**
-     * @return the faceAttributes
+     * @return the scores
      */
-    public Map<String, Object> getFaceAttributes() {
-        return faceAttributes;
+    public Map<String, Object> getScores() {
+        return scores;
     }
 
     /**
-     * @param faceAttributes the faceAttributes to set
+     * @param scores the scores to set
      */
-    public void setFaceAttributes(Map<String, Object> faceAttributes) {
-        this.faceAttributes = faceAttributes;
+    public void setScores(Map<String, Object> scores) {
+        this.scores = scores;
     }
 
     @Override
     public String toString() {
-        return "FaceDetectResponseJSONBody{" + "faceId=" + faceId + ", faceRectangle=" + faceRectangle + ", faceAttributes=" + faceAttributes + '}';
-    }    
+        return "EmotionResponseJSONBody{" + "faceRectangle=" + faceRectangle + ", scores=" + scores + '}';
+    }
+    
 }

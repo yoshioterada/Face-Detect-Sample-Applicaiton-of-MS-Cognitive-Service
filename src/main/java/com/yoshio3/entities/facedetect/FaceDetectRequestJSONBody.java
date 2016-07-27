@@ -43,4 +43,9 @@ public class FaceDetectRequestJSONBody {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    @Override
+    public String toString() {
+        return "FaceDetectRequestJSONBody{" + "url=" + url + '}';
+    }
 }

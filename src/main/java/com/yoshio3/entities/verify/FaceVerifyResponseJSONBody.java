@@ -51,4 +51,10 @@ public class FaceVerifyResponseJSONBody {
     public void setConfidence(Double confidence) {
         this.confidence = confidence;
     }
+
+    @Override
+    public String toString() {
+        return "FaceVerifyResponseJSONBody{" + "isIdentical=" + isIdentical + ", confidence=" + confidence + '}';
+    }
+
 }
